@@ -4,7 +4,7 @@
     <div id="navsdas">
       <router-link to="/">Home</router-link> |
       <router-link to="/list">List</router-link> |
-      <router-link to="/cart">Cart</router-link> 
+      <router-link to="/cart">Cart</router-link> |
     </div>
     <router-view/>
   </div>
@@ -12,6 +12,8 @@
 
 <script>
 import Navbar from '@/components/Navbar'
+
+
 export default {
   components: {Navbar}
 }
