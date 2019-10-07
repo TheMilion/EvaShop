@@ -46,26 +46,21 @@
 
 <script>
 export default {
-  name: "home",
+  name: 'home',
+  props:{},
+  data(){
+    return {}
+  },
+  computed:{},
   components: {},
   methods: {
-    addtoCart(obj){
-      this.$store.dispatch("callcheckCart", obj);
+    addToCart(){
+      let obj = {id : this.$store.state.cart[0].id + 1,price:30}
+      this.$store.dispatch('addToCart', obj)
     },
-  },
-  props: {},
-  computed: {
-    cart(){
-      return $store.state.cart;
+    removeToCart(){
+      this.$store.dispatch('removeToCart', 1)
     }
-  },
-  data() {
-    return {
-        obj: {
-          id:1,
-          title:"ciao",
-        }
-    };
   }
 };
 </script>
