@@ -22,17 +22,3 @@ new Vue({
  render: h => h(App)
 }).$mount('#app')
 
-export default new Vuex.Store({
-  /*state: {
-    cart: []
-  }, 
-  getters: {
- checklistCount(state) {
-     return state.cart.length;
- },
- itemsCount(state) {
-     return state.cart.reduce((count, cart) => {
-         return count + cart.items.length;
-     }, 0);
- }}*/
-});
