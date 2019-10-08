@@ -1,22 +1,20 @@
 <template>
-
-    <b-container fluid>
-      <b-row style="margin-top:20px;">
-      <b-col cols="1"></b-col>
-      <b-col cols="8" class="cartList">
+  <b-container fluid>
+    <b-row v-if="this.$store.state.cart.length">
+      <b-col xl="9" sm="12" class="cartList">
         <h4>Cart List</h4>
         <CartList/>
-        <CartList/>
-        <CartList/>
       </b-col>
-      <b-col cols="3" class="header2">
-        <h4>Cart Summary</h4>
-      <CartSummary/>
-            </b-col>
-      </b-row>
-    </b-container>
-
+      <b-col xl="3" sm="12" class="header2">
+        <CartSummary/>
+      </b-col>
+    </b-row>
+    <div v-else class="emptyCart">
+      <h1>The Cart is empty, add shoes to cart</h1>
+    </div>
+  </b-container>
 </template>
+
 <script>
 import CartSummary from '@/components/CartSummary'
 import CartList from '@/components/CartList'
@@ -43,10 +41,16 @@ CartList
 }
 </script>
 
-<style scoped>
+<style>
+.emptyCart{
+  margin-top: 100px;
+}
 .cartList{
   border:         none;
     border-right:    1px solid hsla(200, 10%, 50%,100);
     width:          1px;    
+}
+.header2 {
+  margin-top: 100px; 
 }
 </style>

@@ -1,49 +1,51 @@
 <template>
-    <b-container fluid>
-          <b-row class="header2">
-             <b-col cols="3">	
-	    <div class="product-image">
-			<a href="#" title="Prova">
-			<img src="https://www.converse.com/dw/image/v2/AALW_PRD/on/demandware.static/-/Sites-ConverseMaster/default/dwcf2a8fd2/images/hi-res/162054_standard.jpg?sw=165&amp;sh=165&amp;sm=fit" alt="Chuck 70 Classic High Top Girasole/Nero/Egret" title="Chuck 70 Classic High Top Girasole/Nero/Egret" data-comingsoon="{&quot;iscommingsoon&quot;:&quot;null&quot;}" class="">
-			</a>
-		</div>
-		
-		 
-    </b-col>   
-    <b-col cols="3">	
-	    <div class="product-name">
-			<h4>Prova</h4>
-            <h6>Dettaglio Scarpa</h6>
-		</div>
-    </b-col>  
-    <b-col cols="3">	
-	    <div class="product-qty">
-			<h6>Quantità: <select><option>1</option></select></h6>
-			</a>
-		</div>
-    </b-col>  
-       <b-col cols="2">
-            <div class="product-pricing" style="display:block;">
-			<span class="product-sales-price" title="Sale Price"><h6>90,00 €</h6></span>
-
-        </div>
-        </b-col> 
-        <b-col cols="1">
-            <div class="deleteItem">
-           <button>X</button>
-           </div>
-        </b-col> 
-        
-          </b-row>
-          <hr>
-        </b-container>
+<div>
+  <b-container fluid>
+    <b-row v-for="(item, i) in this.$store.state.cart" :key="i" class="header2">
+      <b-col class="product-image" xl="3" lg="3" md="6" sm="12">
+        <a href="#">
+			    <img :src="item.urlImg">
+        </a>
+      </b-col>   
+      <b-col class="product-name" xl="3" lg="3" md="6" sm="12">
+			  <h4>{{item.name}}</h4>
+        <h6>Color: {{item.color}}</h6>
+        <h6>Size: {{item.size}}</h6>
+      </b-col>  
+      <b-col class="product-qty" xl="3" lg="3" md="6" sm="12">
+			  <h6>Quantità: 
+          <select v-model="item.quantity" @change="updateQuantity(item.quantity)">
+            <option v-for="n in 10" :key="n" :value="n">{{n}}</option>
+          </select>
+        </h6>
+      </b-col>  
+      <b-col class="product-pricing" xl="2" lg="2" md="4" sm="8">
+			  <span class="product-sales-price" title="Sale Price">
+          <h6>{{item.price}} €</h6>
+        </span>
+      </b-col> 
+      <b-col class="deleteItem" xl="1" lg="1" md="2" sm="4">
+        <button @click="removeToCart(item.id, item.size)">X</button>
+      </b-col>
+      <hr>
+    </b-row>
+  </b-container>
+</div>
 </template>
 
 <script>
 export default {
   name: "CartSummary",
   components: {},
-  methods: {},
+  methods: {
+    removeToCart(id, size){
+      let obj = {id: id, size: size}
+      this.$store.dispatch('removeToCart', obj)
+    },
+    updateQuantity(qnt){
+      $cookies.set('cart', JSON.stringify(this.$store.state.cart))
+    }
+  },
   props: {},
   computed: {},
   data() {
@@ -53,12 +55,10 @@ export default {
 </script>
 
 <style scoped>
-.header2 {
+.product-name, .product-qty, .product-pricing, .deleteItem{
   margin-top: 50px;
 }
-.product-name, .product-qty, .product-pricing, .deleteItem{
-  position: absolute;
-  top: 50%;
-  transform: translate(-50%,-50%);
+img{
+  width: 100%;
 }
 </style>

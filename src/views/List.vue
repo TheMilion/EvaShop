@@ -7,9 +7,7 @@
       <b-row>
       <b-col cols="1"></b-col>
       <b-col cols="10">
-
-            <ListItem :items="itemList"/>
-      
+        <ListItem :items="itemList"/>
       </b-col>
       <b-col cols="1"></b-col>
       </b-row>
@@ -54,7 +52,7 @@ export default {
 <style scoped>
 .secondJumbotron {
   height: 450px;
-  margin-top: -3px;
+  margin-top: 50px;
   background-image: url("https://brand.assets.adidas.com/image/upload/f_auto,q_auto,fl_lossy/itIT/Images/originals-fw19-bb-era-launch-glp-k-mh-medium-ozweego-d_tcm213-381063.jpg");
   background-size: 100%;
    background-size:     cover;

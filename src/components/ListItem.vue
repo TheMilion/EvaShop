@@ -10,9 +10,9 @@
 		<div class="product-name">
 			<h6>{{item.product_name}}</h6>
 		</div>
-		<div class="product-pricing" style="display:block;">
+		<div class="product-pricing">
 			<span class="product-sales-price" title="Sale Price">{{item.original_price}} €</span>
-		</div> 
+		</div>
 		</b-col>
 		</div>
 
@@ -22,18 +22,16 @@
 
 <script>
 export default {
-  name: "ListItem",
-  components: {},
-  methods: {
-
-  },
-  props:  ["items"],
-  computed: {},
-  data() {
-    return {
-		upHere:false,
-	};
-  }
+	name: "ListItem",
+	components: {},
+	methods: {},
+	props:  ["items"],
+	computed: {},
+	data() {
+		return {
+			upHere:false,
+		};
+	}
 };
 </script>
 
