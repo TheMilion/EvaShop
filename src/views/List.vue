@@ -1,12 +1,13 @@
 <template>
   <div class="list">
-
-      <b-jumbotron class="secondJumbotron">
-        </b-jumbotron>
+ 
         <b-container fluid>
         <b-row>
           <b-col cols="1"></b-col>
           <b-col cols="10">
+           <div class="info">
+              <h1>Tutti i Prodotti</h1>
+          </div>
           <ListItem :items="itemList"/>
       </b-col>
       <b-col cols="1"></b-col>
@@ -48,14 +49,7 @@ export default {
 </script>
 
 <style scoped>
-.secondJumbotron {
-  height: 450px;
-  margin-top: 50px;
-  background-image: url("https://brand.assets.adidas.com/image/upload/f_auto,q_auto,fl_lossy/itIT/Images/originals-fw19-bb-era-launch-glp-k-mh-medium-ozweego-d_tcm213-381063.jpg");
-  background-size: 100%;
-   background-size:     cover;
-    background-repeat:   no-repeat;
-    background-position: center center;  
-  margin-bottom: 50px;
+.info{
+  margin-top:100px;
 }
 </style>

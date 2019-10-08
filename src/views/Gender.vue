@@ -6,7 +6,7 @@
           <b-col cols="1"></b-col>
           <b-col cols="10">
           <div class="info">
-              <h1>{{this.$route.params.id}}</h1>
+              <h1>{{this.nameGender}}</h1>
           </div>
           <ListItem :items="itemList"/>
       </b-col>
@@ -18,21 +18,35 @@
 <script>
 import ListItem from '@/components/ListItem'
 export default {
-  name: 'Categories',
+  name: 'Gender',
   components: { ListItem
   },
     data(){
     return {
       itemList: [],
+      nameGender: "",
     }
   },        
   mounted(){
     this.getList();
   },
   methods: {
+    getName(){
+        switch (this.$route.params.id){
+            case "M" : this.nameGender = "Men";
+                break;
+            case "U" : this.nameGender = "Unisex";
+                break;
+            case "W" : this.nameGender = "Women";
+                break;
+            case "K" : this.nameGender = "Kids";
+                break;
+        }
+    },
     getList(){
+        this.getName();
         console.log(this.$route.params.id)
-      this.$axios.get("http://localhost:3000/products?category="+ this.$route.params.id)
+      this.$axios.get("http://localhost:3000/products?gender="+ this.$route.params.id)
       .then(res=>{
         this.itemList = res.data
         console.log(res.data)

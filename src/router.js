@@ -5,6 +5,7 @@ import List from './views/List.vue'
 import Cart from './views/Cart.vue'
 import ListItemDetails from './views/ListItemDetails.vue'
 import Categories from './views/Categories.vue'
+import Gender from './views/Gender.vue'
 
 Vue.use(Router)
 
@@ -36,6 +37,11 @@ export default new Router({
       path: '/categories/:id',
       name: 'Categories',
       component: Categories,
+    },
+    {
+      path: '/gender/:id',
+      name: 'Gender',
+      component: Gender,
     }
   ]
 })

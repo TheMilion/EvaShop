@@ -2,11 +2,41 @@
   <div class="home">
     {{this.$store.state.checkcart}}
     <b-jumbotron class="firstJumbotron">
-      <div class="prova">
+      <div class="firstJumboContent">
       <h2 style="color:white" >Adidas Originals </h2>
       <p style="color:white">was designed to focus on the brand's earlier designs which remained a popular life-style icon</p>
       <b-button variant="primary" @click="gotoPage('Originals')">Go to Page Originals</b-button>
       </div>
+    </b-jumbotron>
+
+<b-container fluid class="header2">
+  <b-row>
+      <b-col col= "6">
+        <b-card
+          title="Adidas Men"
+          img-src="https://www.wallpaperflare.com/static/416/549/131/adidas-robin-van-persie-men-s-wallpaper.jpg"
+          img-alt="Image"
+        >
+          <b-button href="#" @click="gotoPageGender('M')" variant="primary">Go to Page Adidas Men</b-button>
+        </b-card>
+      </b-col>
+      <b-col col= "6">
+        <b-card
+          title="Adidas Women"
+          img-src="https://i.ibb.co/P6tdJ01/wallpaperflare-com-wallpaper.jpg"
+          img-alt="Image"
+        >
+          <b- <b-button href="#" @click="gotoPageGender('W')" variant="primary">Go to Page Adidas Women</b-button>
+        </b-card>
+      </b-col>
+  </b-row>
+  </b-container>
+<b-jumbotron class="secondJumbotron">
+<div class="secondJumboContent">
+      <img src="https://brand.assets.adidas.com/image/upload/f_auto,q_auto,fl_lossy/enGB/Images/originals-fw19-bb-era-launch-glp-k-mh-medium-ozweego-logo_tcm143-381064.png">
+      <h2 style="color:black" >Adidas Kids </h2>
+      <b-button variant="primary" @click="gotoPageGender('K')">Go to Page Adidas Kids</b-button>
+</div>     
     </b-jumbotron>
 
 <b-container fluid class="header2">
@@ -32,16 +62,7 @@
         </b-card>
       </b-col>
   </b-row>
-  </b-container>
-<b-jumbotron class="secondJumbotron">
-      
-    </b-jumbotron>
-
-  <b-container fluid class="bv-example-row">
-  <b-row>
-      <b-col col= 12>Popolari della settimana</b-col>
-</b-row>
-  </b-container>
+  </b-container>    
   </div>
 </template>
 
@@ -58,6 +79,11 @@ export default {
     gotoPage(el){
 		  this.$router.push({
       			name: 'Categories', params: {id: el}
+	  })
+  },
+  gotoPageGender(el){
+		  this.$router.push({
+      			name: 'Gender', params: {id: el}
 	  })
   },
     
@@ -83,8 +109,9 @@ export default {
     background-position: center center;  
   margin-bottom: 50px;
 }
+
 .secondJumbotron {
-  height: 550px;
+  height: 800px;
   margin-top: -3px;
   background-image: url("https://brand.assets.adidas.com/image/upload/f_auto,q_auto,fl_lossy/itIT/Images/originals-fw19-bb-era-launch-glp-k-mh-medium-ozweego-d_tcm213-381063.jpg");
   background-size: 100%;
@@ -97,10 +124,11 @@ export default {
   margin-bottom: 50px;
 }
 
-.prova{
+.firstJumboContent{
   position: absolute;
 top: +600px;
 left: 100px;
 bottom: 100px;
 } 
+
 </style>

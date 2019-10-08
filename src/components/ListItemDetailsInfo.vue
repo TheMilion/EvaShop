@@ -3,18 +3,22 @@
     <b-row class="header2">
              <b-col cols="3">	
 	    <div class="slider_vert">
+      <template v-if="item && item._links">
         <div v-for="(items,i) in item._links.images_small" v-if="i <= 4" :key="i">
           <img :src="items.href"  :class="{ 'active': activeIndex === i }"  @click="setActive(items, i)"  class="img-thumbnail item_leftslider" >
         </div>
+      </template>
 		</div>
 		
 		 
     </b-col>   
     <b-col cols="9">	
 	    <div class="slider_info">
+      <template v-if="item && item._links">
             <div v-for="(items,i) in item._links.images_large" v-if="i <= 4" :key="'image_large'+i">
           <img :class="{ 'active': activeIndex === i }"  @blur="setActive(i)" :src="items.href" :id="'image_large'+i" class="img-thumbnail item_rightslider">
       </div>
+      </template>
 		</div>
     </b-col>  
           </b-row>
