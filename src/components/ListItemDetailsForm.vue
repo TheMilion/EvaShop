@@ -1,6 +1,6 @@
 <template>
 <div class="header2">
-<b-form @submit.prevent="onSubmit" >
+<!--b-form @submit.prevent="onSubmit" >
 <div class="infoshow">
     <h2>{{items.product_name}}</h2>
     <h6>Model: {{items.model_number}} </h6>
@@ -17,7 +17,7 @@
     <b-form-group label="Choose Size:">
         <div>
         <b-form-select v-model="form.sizeselected">
-             <option v-for="i in 50" :key="i" v-if="i >= 35" :value="i">{{i}}</option>
+             <option v-for="i in numberFromTo" :key="i" :value="i">{{i}}</option>
         </b-form-select>
         </div>  
     </b-form-group>  
@@ -30,7 +30,7 @@
     <hr>
         <b-button type="submit" style="width:100%" variant="primary">Add to Cart</b-button>
     <hr>
-</b-form>
+</b-form-->
 </div>
 </template>
 
@@ -38,6 +38,11 @@
 export default {
   name: "ListItemDetailsForm",
   components: {},
+  mounted(){
+      for(var i=35;i<50;i++){
+          this.numberFromTo.push(i);
+      }
+  },
   methods: {
 
 onSubmit(){
@@ -88,6 +93,7 @@ if(this.form.sizeselected == ""){
   computed: {},
   data() {
     return {
+        numberFromTo: [],
         form:{
             product_name: "",
             product_id: "",

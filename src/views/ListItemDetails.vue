@@ -4,10 +4,9 @@
         <b-row>
           <b-col cols="1"></b-col>
           <b-col cols="8" class="info">
-               <ListItemDetailsInfo :item="itemList"/>  
-        
+               <ListItemDetailsInfo/>
       </b-col>   
-          <b-col cols="3"><ListItemDetailsForm :items="itemList"/></b-col>
+          <b-col cols="3"><ListItemDetailsForm/></b-col>
       </b-row>
     </b-container>
     </div>
@@ -21,8 +20,7 @@ export default {
 
     data(){
     return {
-      itemList: {},
-
+      //itemList: this.$store.state.itemList
     }
   },
   components:  {ListItemDetailsForm,ListItemDetailsInfo} ,       
@@ -33,10 +31,9 @@ export default {
     getItem(){
       this.$axios.get("http://localhost:3000/products?product_id="+ this.$route.params.id)
       .then(res=>{
-          //console.log(res.data)
-        this.itemList = res.data[0]
-        console.log(itemList)
+        this.$store.state.itemList = res.data[0]
       }).catch(e=>{
+        alert(e)
       })
 
     }
