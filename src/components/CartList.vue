@@ -4,13 +4,13 @@
     <b-row v-for="(item, i) in this.$store.state.cart" :key="i" class="header2">
       <b-col class="product-image" xl="3" lg="3" md="6" sm="12">
         <a href="#">
-			    <img :src="item.urlImg">
+			    <img class="img-thumbnail" :src="item.urlImg">
         </a>
       </b-col>   
       <b-col class="product-name" xl="3" lg="3" md="6" sm="12">
 			  <h4>{{item.name}}</h4>
-        <h6>Color: {{item.color}}</h6>
         <h6>Size: {{item.size}}</h6>
+        <div class="circle" :style="{backgroundColor: item.color}"></div>
       </b-col>  
       <b-col class="product-qty" xl="3" lg="3" md="6" sm="12">
 			  <h6>Quantità: 
@@ -27,15 +27,15 @@
       <b-col class="deleteItem" xl="1" lg="1" md="2" sm="4">
         <button @click="removeToCart(item.id, item.size)">X</button>
       </b-col>
-      <hr>
     </b-row>
+    <hr>
   </b-container>
 </div>
 </template>
 
 <script>
 export default {
-  name: "CartSummary",
+  name: "CartList",
   components: {},
   methods: {
     removeToCart(id, size){
@@ -57,6 +57,11 @@ export default {
 <style scoped>
 .product-name, .product-qty, .product-pricing, .deleteItem{
   margin-top: 50px;
+}
+.circle {
+    width:35px;
+    height:35px;
+    border-radius: 50px;
 }
 img{
   width: 100%;

@@ -31,7 +31,9 @@ CartList
 
   },
   computed:{
-
+    allCart() {
+      return this.$store.getters.getItems
+    }
   },
   data(){
     return {

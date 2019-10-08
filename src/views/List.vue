@@ -1,18 +1,17 @@
 <template>
   <div class="list">
-    <b-jumbotron class="secondJumbotron">
-      <pre></pre>
-    </b-jumbotron>
-    <b-container fluid>
-      <b-row>
-      <b-col cols="1"></b-col>
-      <b-col cols="10">
-        <ListItem :items="itemList"/>
+
+      <b-jumbotron class="secondJumbotron">
+        </b-jumbotron>
+        <b-container fluid>
+        <b-row>
+          <b-col cols="1"></b-col>
+          <b-col cols="10">
+          <ListItem :items="itemList"/>
       </b-col>
       <b-col cols="1"></b-col>
       </b-row>
-    </b-container>
-  </div>
+    </b-container></div>
 </template>
 
 <script>
