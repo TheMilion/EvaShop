@@ -19,7 +19,7 @@
     <b-col cols="3">	
 	    <div class="product-qty">
 			<h6>Quantità: <select><option>1</option></select></h6>
-			</a>
+
 		</div>
     </b-col>  
        <b-col cols="2">
@@ -41,10 +41,10 @@
 
 <script>
 export default {
-  name: "CartSummary",
+  name: "CartList",
   components: {},
   methods: {},
-  props: {},
+  props: ["cart"],
   computed: {},
   data() {
     return {};

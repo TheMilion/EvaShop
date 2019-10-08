@@ -5,13 +5,13 @@
       <b-col cols="1"></b-col>
       <b-col cols="8" class="cartList">
         <h4>Cart List</h4>
-        <CartList/>
+        <CartList :cart="allCart" />
         <CartList/>
         <CartList/>
       </b-col>
       <b-col cols="3" class="header2">
         <h4>Cart Summary</h4>
-      <CartSummary/>
+      <CartSummary :cart="allCart" />
             </b-col>
       </b-row>
     </b-container>
@@ -33,7 +33,9 @@ CartList
 
   },
   computed:{
-
+    allCart() {
+      return this.$store.getters.getItems
+    }
   },
   data(){
     return {

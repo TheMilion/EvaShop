@@ -26,6 +26,9 @@ export default new Vuex.Store({
   },
 
   getters:{
+    getItems: state=> {
+      return state.cart
+    },
     countItemsCart: state => {
       return state.cart.length
     },
