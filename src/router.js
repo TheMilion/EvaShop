@@ -4,6 +4,7 @@ import Home from './views/Home.vue'
 import List from './views/List.vue'
 import Cart from './views/Cart.vue'
 import ListItemDetails from './views/ListItemDetails.vue'
+import Categories from './views/Categories.vue'
 
 Vue.use(Router)
 
@@ -30,7 +31,11 @@ export default new Router({
       path: '/listitemdetails/:id',
       name: 'ListItemDetails',
       component: ListItemDetails,
-      //query: {product_id : ""}, params: {product_id: ""}
+    },
+    {
+      path: '/categories/:id',
+      name: 'Categories',
+      component: Categories,
     }
   ]
 })

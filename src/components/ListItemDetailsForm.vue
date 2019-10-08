@@ -1,6 +1,7 @@
 <template>
 <div class="header2">
 <b-form @submit.prevent="onSubmit" >
+
 <div class="infoshow">
     <h2>{{items.product_name}}</h2>
     <h6>Model: {{items.model_number}} </h6>
@@ -13,7 +14,13 @@
             <b-form-radio v-model="form.colorselected" name="color-radio" :value="color" ></b-form-radio>
         </span>
     </b-form-group>
+     
 </div>
+prova
+<span v-for ="(item,i) in items._embedded.color_variations">
+        {{item.product_id}}
+        <img :src="item._links.image_small.href" @click="itemDetails(item.product_id)" class="img-thumbnails" style="border-radius:20px; width:80px">
+</span>
     <b-form-group label="Choose Size:">
         <div>
         <b-form-select v-model="form.sizeselected">
@@ -40,6 +47,12 @@ export default {
   components: {},
   methods: {
 
+      itemDetails(el){
+		  this.$router.push({
+      			name: 'ListItemDetails', params: {id: el}
+	  })
+  },
+
 onSubmit(){
     this.checkError();
     if(this.counterError == 0){
@@ -49,6 +62,9 @@ onSubmit(){
     this.form.image = this.items._links.image_small.href;
     let obj = {id: this.form.product_id, name: this.form.product_name, price: this.form.original_price, urlImg: this.form.image, size: this.form.sizeselected, color: this.form.colorselected, quantity: this.form.quantity}
     this.$store.dispatch('addToCart', obj)
+     this.$router.push({
+      			name: 'cart',
+	  })
     this.clearForm();
     }
 },

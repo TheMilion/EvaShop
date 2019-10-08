@@ -5,7 +5,12 @@
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
-          <b-nav-item to="/list">List</b-nav-item>
+          <b-nav-item to="/list">All Shoes</b-nav-item>
+           <b-nav-item-dropdown text="Category" right>
+          <b-dropdown-item to="/categories/Originals">Originals</b-dropdown-item>
+          <b-dropdown-item to="/categories/Performance">Performance</b-dropdown-item>
+          <b-dropdown-item to="/categories/Essentials">Essentials</b-dropdown-item>
+        </b-nav-item-dropdown>
           <b-nav-item to="/cart">Cart {{ this.$store.getters.countItemsCart }}</b-nav-item>
         </b-navbar-nav>
         <b-nav-text></b-nav-text>
@@ -24,7 +29,13 @@
 export default {
   name: "navbar",
   components: {},
-  methods: {},
+  methods: {
+    gotoPage(el){
+		  this.$router.push({
+      			name: 'Categories', params: {id: el}
+	  })
+  },
+  },
   props: {},
   computed: {},
   data() {

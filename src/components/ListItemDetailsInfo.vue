@@ -3,7 +3,7 @@
     <b-row class="header2">
              <b-col cols="3">	
 	    <div class="slider_vert">
-        <div v-for="(items,i) in item._links.images_small" v-if="i <= 4" :key="'image_small'+i">
+        <div v-for="(items,i) in item._links.images_small" v-if="i <= 4" :key="i">
           <img :src="items.href"  :class="{ 'active': activeIndex === i }"  @click="setActive(items, i)"  class="img-thumbnail item_leftslider" >
         </div>
 		</div>
@@ -72,5 +72,8 @@ export default {
 .active{
  display:block;
  border: 1px solid gray;
+}
+.li{
+
 }
 </style>
