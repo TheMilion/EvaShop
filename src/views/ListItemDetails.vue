@@ -34,7 +34,10 @@ export default {
       this.$axios.get("http://localhost:3000/products?product_id="+ this.$route.params.id)
       .then(res=>{
           //console.log(res.data)
-        this.itemList = res.data[0]
+        this.itemList = res.data[0];
+        for(var i=0; i<this.itemList.length; i++){
+          
+        }
         console.log(itemList)
       }).catch(e=>{
       })

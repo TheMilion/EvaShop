@@ -2,8 +2,8 @@
 <b-container fluid class="header2">
 <b-row>
 	<div class="contentlist" v-for="item in items" :key="item.product_id">
-		<b-col :class="item.product_id" @click="itemDetails(item.product_id)">
-	    <div class="product-image">
+		<b-col :class="item.product_id" >
+	    <div class="product-image" @click="itemDetails(item.product_id)">
 			<p>
 			<img :src="item._links.image_small.href" class="img-thumbnail">
 			</p>

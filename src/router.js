@@ -6,6 +6,8 @@ import Cart from './views/Cart.vue'
 import ListItemDetails from './views/ListItemDetails.vue'
 import Categories from './views/Categories.vue'
 import Gender from './views/Gender.vue'
+import Search from './views/Search.vue'
+
 
 Vue.use(Router)
 
@@ -42,6 +44,11 @@ export default new Router({
       path: '/gender/:id',
       name: 'Gender',
       component: Gender,
+    },
+    {
+      path: '/search/:id',
+      name: 'Search',
+      component: Search,
     }
   ]
 })

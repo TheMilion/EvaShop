@@ -10,7 +10,7 @@
 <div>
     <b-form-group label="Choose Color:">   
 <template v-if="items && items._embedded">
-<span v-for ="(item,i) in items._embedded.color_variations">
+<span v-for ="(item,i) in items._embedded.color_variations" :key=i>
         <div class="color">
         <img :src="item._links.image_small.href" :class="{ 'active': activeClass === item.product_id }" @click="itemDetails(item.product_id)" class="img-thumbnails" style="border-radius:20px; width:80px">
         </div>

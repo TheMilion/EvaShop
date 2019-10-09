@@ -11,7 +11,7 @@
 
 <b-container fluid class="header2">
   <b-row>
-      <b-col col= "6">
+      <b-col cols= "6">
         <b-card
           title="Adidas Men"
           img-src="https://www.wallpaperflare.com/static/416/549/131/adidas-robin-van-persie-men-s-wallpaper.jpg"
@@ -20,13 +20,13 @@
           <b-button href="#" @click="gotoPageGender('M')" variant="primary">Go to Page Adidas Men</b-button>
         </b-card>
       </b-col>
-      <b-col col= "6">
+      <b-col cols= "6">
         <b-card
           title="Adidas Women"
           img-src="https://i.ibb.co/P6tdJ01/wallpaperflare-com-wallpaper.jpg"
           img-alt="Image"
         >
-          <b- <b-button href="#" @click="gotoPageGender('W')" variant="primary">Go to Page Adidas Women</b-button>
+          <b-button href="#" @click="gotoPageGender('W')" variant="primary">Go to Page Adidas Women</b-button>
         </b-card>
       </b-col>
   </b-row>
@@ -41,7 +41,7 @@
 
 <b-container fluid class="header2">
   <b-row>
-      <b-col col= "6">
+      <b-col cols= "6">
         <b-card
           title="Adidas Performance"
           img-src="https://wallpapercave.com/wp/wp2022639.jpg"
@@ -51,14 +51,14 @@
           <b-button href="#" @click="gotoPage('Performance')" variant="primary">Go to Page Performance</b-button>
         </b-card>
       </b-col>
-      <b-col col= "6">
+      <b-col cols= "6">
         <b-card
           title="Adidas Essentials"
           img-src="https://wallpapercave.com/wp/wp2671830.jpg"
           img-alt="Image"
         >
           <b-card-text>Which dealt with the fashion market; the main group within this being.</b-card-text>
-          <b- <b-button href="#" @click="gotoPage('Essentials')" variant="primary">Go to Page Essentials</b-button>
+          <b-button href="#" @click="gotoPage('Essentials')" variant="primary">Go to Page Essentials</b-button>
         </b-card>
       </b-col>
   </b-row>
