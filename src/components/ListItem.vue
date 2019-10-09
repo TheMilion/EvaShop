@@ -40,8 +40,11 @@ export default {
 			  this.display = false;
 		  }
 		  else{
-			  	this.loadmore += 20,
-				this.display = true;
+				  this.loadmore += 20
+				  if(this.loadmore > this.items.length){
+						  this.display = false;
+						  return
+		  }		this.display = true;
 			  
 		  }
 		},
