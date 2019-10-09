@@ -7,6 +7,7 @@ import ListItemDetails from '@/views/ListItemDetails.vue'
 import Categories from '@/views/Categories.vue'
 import Gender from '@/views/Gender.vue'
 import Checkout from '@/views/Checkout.vue'
+import Search from '@/views/Search.vue'
 
 Vue.use(Router)
 
@@ -48,6 +49,11 @@ export default new Router({
       path: '/checkout',
       name: 'Checkout',
       component: Checkout
+    },
+    {
+      path: '/search/:id',
+      name: 'Search',
+      component: Search,
     }
   ]
 })

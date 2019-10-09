@@ -1,5 +1,5 @@
 <template>
-  <b-container fluid style="margin-top: 80px">
+  <b-container fluid class="cart" >
     <b-row v-if="this.$store.state.cart.length">
       <b-col xl="9" sm="12" class="cartList">
         <h4>Cart List</h4>
@@ -44,15 +44,19 @@ CartList
 </script>
 
 <style>
+.cart{
+padding: 80px;
+}
 .emptyCart{
   margin-top: 100px;
 }
 .cartList{
   border:         none;
     border-right:    1px solid hsla(200, 10%, 50%,100);
-    width:          1px;    
+    width:          1px;  
+     
 }
 .header2 {
-  margin-top: 100px; 
+  padding: 80px; 
 }
 </style>

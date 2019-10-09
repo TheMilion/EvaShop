@@ -16,14 +16,14 @@
     </b-col>   
     <b-col cols="9">	
 	    <div class="slider_info">
-        <template v-if="item && item._links">
-          <div v-for="(items,i) in item._links.images_large" :v-if="i <= 4" :key="'image_large'+i">
-            <template v-if="i<5">
-              <img :class="{ 'active': activeIndex === i }"  @blur="setActive(i)" :src="items.href" :id="'image_large'+i" class="img-thumbnail item_rightslider">
-            </template>
-          </div>
-        </template>
-		  </div>
+      <template v-if="item && item._links">
+            <div v-for="(items,i) in item._links.images_large" :key="'image_large'+i">
+              <template v-if="i < 5">
+          <img :class="{ 'active': activeIndex === i }"  @blur="setActive(i)" :src="items.href" :id="'image_large'+i" class="img-thumbnail item_rightslider">
+              </template>
+      </div>
+      </template>
+		</div>
     </b-col>  
           </b-row>
           <hr>

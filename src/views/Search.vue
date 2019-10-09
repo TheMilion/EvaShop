@@ -1,12 +1,12 @@
 <template>
   <div class="list">
- 
+
         <b-container fluid>
         <b-row>
           <b-col cols="1"></b-col>
           <b-col cols="10">
-           <div class="info">
-              <h1>Tutti i Prodotti</h1>
+          <div class="info">
+              <h1>{{this.$route.params.id}}</h1>
           </div>
           <ListItem :items="itemList"/>
       </b-col>
@@ -18,39 +18,39 @@
 <script>
 import ListItem from '@/components/ListItem'
 export default {
-  name: 'list',
+  name: 'Search',
   components: { ListItem
   },
     data(){
     return {
       itemList: [],
+      nameGender: "",
     }
   },        
   mounted(){
     this.getList();
   },
   methods: {
-
     getList(){
-      this.$axios.get("http://localhost:3000/products")
+      this.$axios.get("http://localhost:3000/products?product_name="+ this.$route.params.id)
       .then(res=>{
-        if(res.data[0] == undefined){
-            alert('Error 404: item not found')
-            this.$router.go(-1)
-          } else {
-            this.itemList = res.data
-          }
+        this.itemList = res.data
       }).catch(e=>{
-        alert(e)
-        this.$router.go(-1)
       })
+
     }
   },
+  watch: {
+        '$route': function(){
+            this.getList();
+        }
+    },
   props:{
 
   },
   computed:{
-  }
+
+  },
 
 }
 </script>
