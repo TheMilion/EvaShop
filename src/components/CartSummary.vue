@@ -1,7 +1,7 @@
 <template>
-  <div class="containersummary">
+  <div>
     <h4>Cart Summary</h4>
-    <p>Subtot: {{this.$store.getters.totalPrice}}</p> 
+    <p>Subtot: {{this.$store.getters.totalPrice}}€</p> 
     <p>IVA included: {{iva}}€</p>
     <hr>
     <h4>Total: {{this.$store.getters.totalPrice}}€</h4>

@@ -1,10 +1,12 @@
 <template>
     <div class="margin">
         <h1>CHECKOUT</h1>
-        <b-row style="padding: 75px;">
-            <b-col style="background-color: grey" xl="10" lg="9" md="7" sm="12"><CheckoutForm/></b-col>
-            <b-col style="background-color: brown" xl="2" lg="3" md="5" sm="12"><CartSummary/></b-col>
-        </b-row>
+        <b-container>
+            <b-row>
+                <b-col class="colCheckoutForm" xl="9" lg="8" md="7" sm="12"><CheckoutForm/></b-col>
+                <b-col class="colCartSummary" xl="3" lg="4" md="5" sm="12"><CartSummary/></b-col>
+            </b-row>
+        </b-container>
     </div>
 </template>
 
@@ -30,5 +32,9 @@ export default {
 <style scoped>
 .margin{
     margin-top: 50px;
+}
+.colCheckoutForm, .colCartSummary{
+    padding: 50px;
+    border-right: 1px solid hsla(200, 10%, 50%,100);
 }
 </style>
