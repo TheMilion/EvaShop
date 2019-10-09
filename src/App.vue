@@ -1,16 +1,18 @@
 <template>
   <div id="app">
     <Navbar></Navbar>
-    <router-view/>
+    <div style="min-height:670px"><router-view /></div>
+    <Footer></Footer>
   </div>
 </template>
 
 <script>
 import Navbar from '@/components/Navbar'
+import Footer from '@/components/Footer'
 
 
 export default {
-  components: {Navbar},
+  components: {Navbar,Footer},
 data() {
     return {
     };

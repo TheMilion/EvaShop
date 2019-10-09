@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="containersummary">
     <h4>Cart Summary</h4>
     <p>Subtotale: {{this.$store.getters.totalPrice}}</p> 
     <p>IVA inclusa: {{iva}}€</p>
@@ -28,4 +28,5 @@ export default {
 </script>
 
 <style scoped>
+
 </style>
