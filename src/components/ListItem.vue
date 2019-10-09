@@ -1,4 +1,5 @@
 <template>
+<b-container fluid class="header2">
 <b-row>
 	<div class="contentlist" v-for="item in items" :key="item.product_id">
 		<b-col :class="item.product_id" @click="itemDetails(item.product_id)">
@@ -14,11 +15,9 @@
 			<span class="product-sales-price" title="Sale Price">{{item.original_price}} €</span>
 		</div>
 		</b-col>
-
 		</div>
-
 </b-row>    
-        
+</b-container>   
 </template>
 
 <script>

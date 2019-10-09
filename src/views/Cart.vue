@@ -1,5 +1,5 @@
 <template>
-  <b-container fluid>
+  <b-container fluid style="margin-top: 80px">
     <b-row v-if="this.$store.state.cart.length">
       <b-col xl="9" sm="12" class="cartList">
         <h4>Cart List</h4>

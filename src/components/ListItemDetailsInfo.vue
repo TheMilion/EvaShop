@@ -1,5 +1,6 @@
 <template>
     <b-container fluid>
+<<<<<<< HEAD
       <b-row class="header2">
         <b-col cols="3">	
 	        <div class="slider_vert">
@@ -25,6 +26,35 @@
       <div v-if="item && item._links" >{{item._links.images_small}}</div>
       <div v-for="(it, i) in item._links.images_small" :key="i">{{it.href}}-{{i}}</div>
     </b-container>
+=======
+    <b-row class="header2">
+             <b-col cols="3">	
+	    <div class="slider_vert">
+        <div v-for="(items,i) in item._links.images_small" v-if="i <= 4" :key="i">
+          <img :src="items.href"  :class="{ 'active': activeIndex === i }"  @click="setActive(items, i)"  class="img-thumbnail item_leftslider" >
+        </div>
+		</div>
+		
+		 
+    </b-col>   
+    <b-col cols="9">	
+	    <div class="slider_info">
+            <div v-for="(items,i) in item._links.images_large" v-if="i <= 4" :key="'image_large'+i">
+          <img :class="{ 'active': activeIndex === i }"  @blur="setActive(i)" :src="items.href" :id="'image_large'+i" class="img-thumbnail item_rightslider">
+      </div>
+		</div>
+    </b-col>  
+          </b-row>
+          <hr>
+          
+          <div class="item_info">
+                <h2>{{item.product_name}}</h2><br>
+      <p>{{item.description_headline}}</p>
+        </div>
+
+      
+        </b-container>
+>>>>>>> d04c585156c113305219df0814624c10913fb981
 </template>
 
 <script>
@@ -71,5 +101,8 @@ export default {
 .active{
  display:block;
  border: 1px solid gray;
+}
+.li{
+
 }
 </style>

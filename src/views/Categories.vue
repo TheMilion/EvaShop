@@ -17,7 +17,7 @@
 <script>
 import ListItem from '@/components/ListItem'
 export default {
-  name: 'list',
+  name: 'Categories',
   components: { ListItem
   },
     data(){
@@ -30,19 +30,27 @@ export default {
   },
   methods: {
     getList(){
-      this.$axios.get("http://localhost:3000/products")
+        console.log(this.$route.params.id)
+      this.$axios.get("http://localhost:3000/products?category="+ this.$route.params.id)
       .then(res=>{
         this.itemList = res.data
+        console.log(res.data)
       }).catch(e=>{
       })
 
     }
   },
+  watch: {
+        '$route': function(){
+            this.getList();
+        }
+    },
   props:{
 
   },
   computed:{
-  }
+
+  },
 
 }
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <div class="list">
+  <div class="list" style="margin-top: 50px">
     <b-container fluid>
         <b-row>
           <b-col cols="1"></b-col>
@@ -23,7 +23,7 @@ export default {
       //itemList: this.$store.state.itemList
     }
   },
-  components:  {ListItemDetailsForm,ListItemDetailsInfo} ,       
+  components:  {ListItemDetailsForm, ListItemDetailsInfo} ,       
   mounted(){
     this.getItem();
   },
@@ -42,8 +42,13 @@ export default {
 
   },
   computed:{
-
   },
+  watch: {
+   
+        '$route': function(){
+            this.getItem();
+        }
+    },
 
 }
 </script>
