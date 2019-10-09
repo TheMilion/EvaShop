@@ -1,35 +1,28 @@
 <template>
 <div class="header2">
-<<<<<<< HEAD
-<!--b-form @submit.prevent="onSubmit" >
-=======
 <b-form @submit.prevent="onSubmit" >
-
->>>>>>> d04c585156c113305219df0814624c10913fb981
 <div class="infoshow">
-    <h2>{{items.product_name}}</h2>
+    <h2 >{{items.product_name}}</h2>
+    <h6>Product: {{items.product_id}} </h6>
     <h6>Model: {{items.model_number}} </h6>
     <h4>{{items.original_price}}€</h4>
 </div>
 <div>
-    <b-form-group label="Choose Color:">
-        <span v-for="(color,i)  in items.color_variation_colors" :key="i" class="color">
-            <div class="circle" :style="{ backgroundColor: color }"></div>
-            <b-form-radio v-model="form.colorselected" name="color-radio" :value="color" ></b-form-radio>
-        </span>
-    </b-form-group>
-     
-</div>
-prova
-<span v-for ="(item,i) in items._embedded.color_variations">
-        {{item.product_id}}
-        <img :src="item._links.image_small.href" @click="itemDetails(item.product_id)" class="img-thumbnails" style="border-radius:20px; width:80px">
+    <b-form-group label="Choose Color:">   
+<template v-if="items && items._embedded">
+<span v-for ="(item,i) in items._embedded.color_variations" :key="i">
+        <div class="color">
+        <img :src="item._links.image_small.href" :class="{ 'active': activeClass === item.product_id }" @click="itemDetails(item.product_id)" class="img-thumbnails" style="border-radius:20px; width:80px">
+        </div>
 </span>
+</template>
+    </b-form-group>
+</div>
     <b-form-group label="Choose Size:">
         <div>
-        <b-form-select v-model="form.sizeselected">
-             <option v-for="i in numberFromTo" :key="i" :value="i">{{i}}</option>
-        </b-form-select>
+            <b-form-select v-model="form.sizeselected" :class="{'sizeError': sizeSelectError}">
+                <option v-for="i in getMaxSize()" :key="i" v-if="i >= getMinSize()" :value="i">{{i}}</option>
+            </b-form-select>
         </div>  
     </b-form-group>  
     <b-form-group label="Choose Quantity:">
@@ -41,7 +34,7 @@ prova
     <hr>
         <b-button type="submit" style="width:100%" variant="primary">Add to Cart</b-button>
     <hr>
-</b-form-->
+</b-form>
 </div>
 </template>
 
@@ -49,16 +42,27 @@ prova
 export default {
   name: "ListItemDetailsForm",
   components: {},
-  mounted(){
-      for(var i=35;i<50;i++){
-          this.numberFromTo.push(i);
-      }
-  },
   methods: {
-
+      getMaxSize(){
+          if(this.items.gender == 'K'){
+              return 38
+          } else {
+              return 50
+          }
+      },
+      getMinSize(){
+          if(this.items.gender == 'K'){
+              return 28
+          } else {
+              return 39
+          }
+      },
+      getActiveClass(){
+          this.activeClass = this.items.product_id;
+      },
       itemDetails(el){
-		  this.$router.push({
-      			name: 'ListItemDetails', params: {id: el}
+          this.$router.push({
+      		name: 'ListItemDetails', params: {id: el}
 	  })
   },
 
@@ -69,7 +73,7 @@ onSubmit(){
     this.form.product_id = this.items.product_id;
     this.form.original_price = this.items.original_price;
     this.form.image = this.items._links.image_small.href;
-    let obj = {id: this.form.product_id, name: this.form.product_name, price: this.form.original_price, urlImg: this.form.image, size: this.form.sizeselected, color: this.form.colorselected, quantity: this.form.quantity}
+    let obj = {id: this.form.product_id, name: this.form.product_name, price: this.form.original_price, urlImg: this.form.image, size: this.form.sizeselected, quantity: this.form.quantity}
     this.$store.dispatch('addToCart', obj)
      this.$router.push({
       			name: 'cart',
@@ -84,7 +88,6 @@ clearForm(){
             product_id: "",
             original_price: "",
             image: "",
-            colorselected: "",
             sizeselected:"",
             quantity: 1,
 
@@ -93,27 +96,22 @@ clearForm(){
 
 checkError(){
     this.counterError = 0;
-if(this.form.colorselected == ""){
-    alert("Seleziona Un Colore");
-    this.counterError ++
-} 
-else{
-
-}
-
 if(this.form.sizeselected == ""){
-    alert("Seleziona Un Taglia");
+    this.sizeSelectError = true
     this.counterError ++
-}else{
-    
 }
   }
   },
   props: ["items"],
+  
+  watch: {
+    items: [{
+      handler: 'getActiveClass'
+    }]
+},
   computed: {},
   data() {
     return {
-        numberFromTo: [],
         form:{
             product_name: "",
             product_id: "",
@@ -122,11 +120,12 @@ if(this.form.sizeselected == ""){
             colorselected: "",
             sizeselected:"",
             quantity: 1,
-
         },
+        activeClass: "",
         counterError: 0,
         selected: '',
         quantity:1,
+        sizeSelectError: false
     };
   }
 };
@@ -141,8 +140,14 @@ if(this.form.sizeselected == ""){
     height:50px;
     border-radius: 50px;
 }
-.color{
-float: left;
-  margin: 1em;
+.color {
+    float:left;
+    margin: 5px;   
+}
+.active{
+ border: 1px solid gray;
+}
+.sizeError{
+    border: 1px solid red;
 }
 </style>

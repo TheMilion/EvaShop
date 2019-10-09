@@ -6,7 +6,12 @@
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
           <b-nav-item to="/list">All Shoes</b-nav-item>
-           <b-nav-item-dropdown text="Category" right>
+          <b-nav-item-dropdown text="Gender" right>
+          <b-dropdown-item to="/Gender/M">Men</b-dropdown-item>
+          <b-dropdown-item to="/Gender/W">Women</b-dropdown-item>
+          <b-dropdown-item to="/Gender/K">Kids</b-dropdown-item>
+        </b-nav-item-dropdown>
+          <b-nav-item-dropdown text="Category" right>
           <b-dropdown-item to="/categories/Originals">Originals</b-dropdown-item>
           <b-dropdown-item to="/categories/Performance">Performance</b-dropdown-item>
           <b-dropdown-item to="/categories/Essentials">Essentials</b-dropdown-item>
@@ -55,7 +60,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
   .router-link-active{
     color: white;
   }
