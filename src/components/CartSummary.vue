@@ -1,12 +1,12 @@
 <template>
   <div class="containersummary">
     <h4>Cart Summary</h4>
-    <p>Subtotale: {{this.$store.getters.totalPrice}}</p> 
-    <p>IVA inclusa: {{iva}}€</p>
+    <p>Subtot: {{this.$store.getters.totalPrice}}</p> 
+    <p>IVA included: {{iva}}€</p>
     <hr>
-    <h4>Order Total: {{this.$store.getters.totalPrice}}€</h4>
+    <h4>Total: {{this.$store.getters.totalPrice}}€</h4>
     <hr>
-    <button>Conferma Pagamento</button>
+    <button v-show="position" @click="goCheckout">Checkout</button>
   </div>
 </template>
 
@@ -14,15 +14,26 @@
 export default {
   name: "CartSummary",
   components: {},
-  methods: {},
+  methods: {
+    goCheckout(){
+      this.$router.push({path: '/checkout'})
+    }
+  },
+  mounted(){
+    if(this.$route.name=='cart'){
+      this.position=true
+    }
+  },
   props: {},
   computed: {
     iva(){
       return (this.$store.getters.totalPrice*22)/100
-    }
+    }    
   },
   data() {
-    return {};
+    return {
+      position: false
+    };
   }
 };
 </script>

@@ -6,7 +6,9 @@ import store from '@/store'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
 library.add(faUserSecret)
+
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 
@@ -33,10 +35,8 @@ new Vue({
   created(){
     if($cookies.get('cart') == null){
       $cookies.set('cart', JSON.stringify(this.$store.state.cart), '10d')
-      console.log('Cookie cart creato!')
     } else {
       this.$store.state.cart = JSON.parse($cookies.get('cart'))
-      console.log('Cookie cart recuperato!')
     }
   },
   render: h => h(App) 

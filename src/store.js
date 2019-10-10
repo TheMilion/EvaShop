@@ -29,7 +29,7 @@ export default new Vuex.Store({
       for(var i in state.cart){
         if(state.cart[i].size != obj.size) continue
 				if(state.cart[i].id == obj.id){
-				  state.cart[i].quantity++;
+				  state.cart[i].quantity += obj.quantity;
       		$cookies.set('cart', JSON.stringify(state.cart))
 					return
 				}

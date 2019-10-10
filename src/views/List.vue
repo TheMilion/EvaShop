@@ -34,10 +34,16 @@ export default {
     getList(){
       this.$axios.get("http://localhost:3000/products")
       .then(res=>{
-        this.itemList = res.data
+        if(res.data[0] == undefined){
+            alert('Error 404: item not found')
+            this.$router.go(-1)
+          } else {
+            this.itemList = res.data
+          }
       }).catch(e=>{
+        alert(e)
+        this.$router.go(-1)
       })
-
     }
   },
   props:{

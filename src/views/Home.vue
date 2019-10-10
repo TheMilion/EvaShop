@@ -5,7 +5,7 @@
       <div class="firstJumboContent">
       <h2 style="color:white" >Adidas Originals </h2>
       <p style="color:white">was designed to focus on the brand's earlier designs which remained a popular life-style icon</p>
-      <b-button variant="primary" @click="gotoPage('Originals')">Go to Page Originals</b-button>
+      <router-link :to="{path: '/Categories/Originals'}"><b-button variant="primary">Go to Page Originals</b-button></router-link>
       </div>
     </b-jumbotron>
 
@@ -17,7 +17,7 @@
           img-src="https://www.wallpaperflare.com/static/416/549/131/adidas-robin-van-persie-men-s-wallpaper.jpg"
           img-alt="Image"
         >
-          <b-button href="#" @click="gotoPageGender('M')" variant="primary">Go to Page Adidas Men</b-button>
+          <router-link :to="{path: '/Gender/M'}"><b-button variant="primary">Go to Page Adidas Men</b-button></router-link>
         </b-card>
       </b-col>
       <b-col cols= "6">
@@ -26,7 +26,7 @@
           img-src="https://i.ibb.co/P6tdJ01/wallpaperflare-com-wallpaper.jpg"
           img-alt="Image"
         >
-          <b-button href="#" @click="gotoPageGender('W')" variant="primary">Go to Page Adidas Women</b-button>
+          <router-link :to="{path: '/Gender/W'}"><b-button variant="primary">Go to Page Adidas Women</b-button></router-link>
         </b-card>
       </b-col>
   </b-row>
@@ -35,7 +35,7 @@
 <div class="secondJumboContent">
       <img src="https://brand.assets.adidas.com/image/upload/f_auto,q_auto,fl_lossy/enGB/Images/originals-fw19-bb-era-launch-glp-k-mh-medium-ozweego-logo_tcm143-381064.png">
       <h2 style="color:black" >Adidas Kids </h2>
-      <b-button variant="primary" @click="gotoPageGender('K')">Go to Page Adidas Kids</b-button>
+      <router-link :to="{path: '/Gender/K'}"><b-button variant="primary">Go to Page Adidas Kids</b-button></router-link>
 </div>     
     </b-jumbotron>
 
@@ -48,7 +48,7 @@
           img-alt="Image"
         >
           <b-card-text>This shoes was designed to maintain their devotion to the athlete.</b-card-text>
-          <b-button href="#" @click="gotoPage('Performance')" variant="primary">Go to Page Performance</b-button>
+          <router-link :to="{path: '/Categories/Performance'}"><b-button variant="primary">Go to Page Performance</b-button></router-link>
         </b-card>
       </b-col>
       <b-col cols= "6">
@@ -58,7 +58,7 @@
           img-alt="Image"
         >
           <b-card-text>Which dealt with the fashion market; the main group within this being.</b-card-text>
-          <b-button href="#" @click="gotoPage('Essentials')" variant="primary">Go to Page Essentials</b-button>
+          <router-link :to="{path: '/Categories/Essentials'}"><b-button variant="primary">Go to Page Essentials</b-button></router-link>
         </b-card>
       </b-col>
   </b-row>
@@ -76,17 +76,6 @@ export default {
   computed:{},
   components: {},
   methods: {
-    gotoPage(el){
-		  this.$router.push({
-      			name: 'Categories', params: {id: el}
-	  })
-  },
-  gotoPageGender(el){
-		  this.$router.push({
-      			name: 'Gender', params: {id: el}
-	  })
-  },
-    
     addToCart(){
       let obj = {id : this.$store.state.cart[0].id + 1,price:30}
       this.$store.dispatch('addToCart', obj)

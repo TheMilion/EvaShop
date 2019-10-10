@@ -32,11 +32,9 @@ export default {
   },
   methods: {
     getList(){
-        console.log(this.$route.params.id);
       this.$axios.get("http://localhost:3000/products?product_name="+ this.$route.params.id)
       .then(res=>{
         this.itemList = res.data
-        console.log(res.data)
       }).catch(e=>{
       })
 

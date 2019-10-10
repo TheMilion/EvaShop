@@ -4,13 +4,13 @@
     <b-container>
       <b-row class="pt-5 text-center d-flex justify-content-center">
         <b-col md="2" >
-          <h6 class="title font-weight-bold"><p @click="gotoPage('/')">Home</p></h6>
+          <h6 class="title font-weight-bold"><router-link :to="{name: 'home'}">Home</router-link></h6>
         </b-col>
         <b-col md="2" >
-          <h6 class="title font-weight-bold"><p @click="gotoPage('/list')">All Shoes</p></h6>
+          <h6 class="title font-weight-bold"><router-link :to="{path: '/list'}">All Shoes</router-link></h6>
         </b-col>
         <b-col md="2" >
-          <h6 class="title font-weight-bold"><p @click="gotoPage('/cart')">Cart</p></h6>
+          <h6 class="title font-weight-bold"><router-link :to="{path: '/cart'}">Cart</router-link></h6>
         </b-col>
       </b-row>
       <hr style="background-color: blue"/>
@@ -36,10 +36,6 @@ export default {
   name: "Footer",
   components: {},
   methods: {
-      gotoPage(el){
-		  this.$router.push({
-      			path: el})
-  },
   },
   props: {},
   computed: {},

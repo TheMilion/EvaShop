@@ -5,13 +5,13 @@
 	<div class="contentlist" v-for="(item,i) in items" :key="item.product_id">
 		<span v-if=" i < loadmore">
 		<b-col :class="item.product_id">
-		<span class="pointer" @click="itemDetails(item.product_id)">
+			<router-link :to="{name: 'ListItemDetails', params:{id: item.product_id }}">
 	    <div class="product-image" >
 			<p>
 			<img :src="item._links.image_small.href" class="img-thumbnail">
 			</p>
 		</div>
-		</span>
+			</router-link>
 		<div class="product-name">
 			<h6>{{item.product_name}}</h6>
 		</div>
@@ -47,12 +47,8 @@ export default {
 		  }		this.display = true;
 			  
 		  }
-		},
-	  itemDetails(el){
-		  this.$router.push({
-      			name: 'ListItemDetails', params: {id: el}
-	  })
-  }},
+		}
+  },
   props:  ["items"],
   watch: {
   	items: [{

@@ -5,8 +5,8 @@
 	    <div class="slider_vert">
       <template v-if="item && item._links">
         <div v-for="(items,i) in item._links.images_small" :key="i">
-          <template v-if="i <= 4">
-          <img :src="items.href"  :class="{ 'active': activeIndex === i }"  @click="setActive(items, i)"  class="img-thumbnail item_leftslider" >
+          <template v-if="i < 5">
+            <img :src="items.href"  :class="{ 'active': activeIndex === i }"  @click="setActive(items, i)"  class="img-thumbnail item_leftslider" >
           </template>
         </div>
       </template>
@@ -18,7 +18,7 @@
 	    <div class="slider_info">
       <template v-if="item && item._links">
             <div v-for="(items,i) in item._links.images_large" :key="'image_large'+i">
-              <template v-if="i <= 4">
+              <template v-if="i < 5">
           <img :class="{ 'active': activeIndex === i }"  @blur="setActive(i)" :src="items.href" :id="'image_large'+i" class="img-thumbnail item_rightslider">
               </template>
       </div>
@@ -81,5 +81,4 @@ export default {
  display:block;
  border: 1px solid gray;
 }
-
 </style>

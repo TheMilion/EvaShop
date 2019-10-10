@@ -45,12 +45,12 @@ export default {
     },
     getList(){
         this.getName();
-        console.log(this.$route.params.id)
       this.$axios.get("http://localhost:3000/products?gender="+ this.$route.params.id)
       .then(res=>{
         this.itemList = res.data
-        console.log(res.data)
       }).catch(e=>{
+        alert(e)
+        this.$router.go(-1)
       })
 
     }

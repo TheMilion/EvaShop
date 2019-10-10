@@ -32,14 +32,17 @@ export default {
   methods: {
     getItem(){
       this.$axios.get("http://localhost:3000/products?product_id="+ this.$route.params.id)
-      .then(res=>{
-          //console.log(res.data)
-        this.itemList = res.data[0];
-        for(var i=0; i<this.itemList.length; i++){
-          
-        }
-        console.log(itemList)
+      .then(
+        res=>{
+          if(res.data[0] == undefined){
+            alert('Error 404: item not found')
+            this.$router.go(-1)
+          } else {
+            this.itemList = res.data[0]
+          }
       }).catch(e=>{
+        alert(e)
+        this.$router.go(-1)
       })
 
     }
