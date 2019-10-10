@@ -2,8 +2,12 @@
     <div class="margin">
         <b-container>
             <b-row>
-                <b-col class="cartList" xl="9" lg="8" md="7" sm="12"><CheckoutForm/></b-col>
-                <b-col class="cartList" xl="3" lg="4" md="5" sm="12"><CartSummary/></b-col>
+                <b-col class="cartList" xl="9" lg="8" md="7" sm="12">
+                    <CheckoutForm/>
+                </b-col>
+                <b-col class="cartList" xl="3" lg="4" md="5" sm="12">
+                    <CartSummary/>
+                </b-col>
             </b-row>
         </b-container>
     </div>

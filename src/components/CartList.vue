@@ -23,7 +23,7 @@
       </span>
     </b-col>
     <b-col class="deleteItem" xl="1" lg="1" md="2" sm="4">
-      <button @click="removeToCart(item.id, item.size)">X</button>
+      <b-button variant="outline-danger" @click="removeToCart(item.id, item.size)">X</b-button>
     </b-col>
   </b-row>
 </b-container>
