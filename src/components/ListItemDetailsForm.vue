@@ -112,6 +112,7 @@ makeToast() {
           title: 'Itemd added correctly',
            variant: "success",
            toaster: "b-toaster-top-right",
+            delay: 1,
         })
       },
 

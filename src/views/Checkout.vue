@@ -1,6 +1,6 @@
 <template>
     <div class="margin">
-        <h1>CHECKOUT</h1>
+        <h4>Checkout</h4>
         <b-container>
             <b-row>
                 <b-col class="colCheckoutForm" xl="9" lg="8" md="7" sm="12"><CheckoutForm/></b-col>
@@ -31,7 +31,7 @@ export default {
 
 <style scoped>
 .margin{
-    margin-top: 50px;
+    padding: 80px;
 }
 .colCheckoutForm, .colCartSummary{
     padding: 50px;

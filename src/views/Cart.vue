@@ -1,12 +1,15 @@
 <template>
   <b-container fluid class="cart" >
-    <b-row v-if="this.$store.state.cart.length">
+    <b-row v-if="this.$store.state.cart.length" >
       <b-col xl="9" sm="12" class="cartList">
-        <h4>Cart List</h4>
+        <h4>Cart List : {{this.$store.getters.countItemsCart}}</h4>
         <CartList/>
       </b-col>
-      <b-col xl="3" sm="12" class="header2">
+  
+      <b-col xl="3" sm="12" lg="3" class="header2">
+            <div id="right-container">
         <CartSummary/>
+         </div>
       </b-col>
     </b-row>
     <div v-else class="emptyCart">
@@ -50,13 +53,22 @@ padding: 80px;
 .emptyCart{
   margin-top: 100px;
 }
-.cartList{
-  border:         none;
-    border-right:    1px solid hsla(200, 10%, 50%,100);
-    width:          1px;  
-     
-}
+
 .header2 {
   padding: 80px; 
 }
+@media (min-width: 1200px) {
+    #right-container {
+  height: 100%;
+  position: fixed;
+  width: inherit; 
+}
+.cartList{
+  border:         none;
+    border-right:    1px solid hsla(200, 10%, 50%,100);
+    width:          1px;       
+}
+
+}
+
 </style>

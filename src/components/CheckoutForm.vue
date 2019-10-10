@@ -1,6 +1,12 @@
 <template>
     <b-container>
-        <b-form  @submit.prevent="openModal">
+        <Modal :id="idmodal" @modalclosed="closeModal" ref="modal" >
+            <div slot="header">Grazie per aver effettuato l'acquisto</div>
+            <div slot="body">
+                <OrderConfirmed :orderForm="this.orderForm" />
+                </div>
+        </Modal>
+        <b-form  @submit.prevent="checkForm">
             <h3>Insert Address</h3>
             <hr>
             <b-row>
@@ -58,13 +64,17 @@
 </template>
 
 <script>
+import OrderConfirmed from '@/components/OrderConfirmed'
+import Modal from '@/components/Modal'
     export default {
         name: 'CheckoutForm',
-        computed:{
-
+        components: {
+            Modal,
+            OrderConfirmed
         },
         data(){
-            return{   
+            return{  
+                idmodal: "idmodalOrder",
                 orderForm:{
                     name: '',
                     surname: '',
@@ -77,21 +87,29 @@
             }
         },
         methods:{
+
+            closeModal(){
+                this.$store.state.cart = [],
+                this.$router.push({path: '/'})
+            },
             openModal(){
+            this.$refs.modal.openModal()
+            },
+            checkForm(){
                 for(let i in this.orderForm){
                     if(this.orderForm[i]==''){
                         return alert('Fill all fields')
                     }
                 }
-                console.log(this.orderForm)
-                alert('SUCCESS')
+                $cookies.set('cart', []),
+                this.openModal()
             },
             clearForm(){
                 for(let i in this.orderForm){
                     this.orderForm[i] = '';
-                    this.$router.go(-1)
                 }
-            }
+                this.$router.go(-1)
+            },
         }
     }
 </script>
