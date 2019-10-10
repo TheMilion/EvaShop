@@ -47,7 +47,11 @@ export default {
         this.getName();
       this.$axios.get("http://localhost:3000/products?gender="+ this.$route.params.id)
       .then(res=>{
+         if(res.data[0] == undefined){
+            this.$router.replace('/error404')
+          } else {
         this.itemList = res.data
+          }
       }).catch(e=>{
         alert(e)
         this.$router.go(-1)

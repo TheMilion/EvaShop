@@ -8,6 +8,7 @@ import Categories from '@/views/Categories.vue'
 import Gender from '@/views/Gender.vue'
 import Checkout from '@/views/Checkout.vue'
 import Search from '@/views/Search.vue'
+import PageNotFound from '@/views/PageNotFound.vue'
 
 Vue.use(Router)
 
@@ -54,6 +55,12 @@ export default new Router({
       path: '/search/:id',
       name: 'Search',
       component: Search,
-    }
+    },
+    { path: "/error404", 
+      name: 'NotFound',
+    component: PageNotFound },
+    { path: "*", 
+      name: 'PageNotFound',
+    component: PageNotFound }
   ]
 })

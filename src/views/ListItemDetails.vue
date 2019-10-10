@@ -35,14 +35,11 @@ export default {
       .then(
         res=>{
           if(res.data[0] == undefined){
-            alert('Error 404: item not found')
-            this.$router.go(-1)
+            this.$router.replace('/error404');
           } else {
             this.itemList = res.data[0]
           }
       }).catch(e=>{
-        alert(e)
-        this.$router.go(-1)
       })
 
     }

@@ -34,15 +34,6 @@
     <hr>
         <b-button type="submit" style="width:100%" variant="primary">Add to Cart</b-button>
     <hr>
-     <b-toast id="" variant="dark" solid>
-        <div class="d-flex flex-grow-1 align-items-baseline">
-          <b-img blank blank-color="green" class="mr-2" width="12" height="12"></b-img>
-          <strong class="mr-auto">Item added to the cart!</strong>
-          <small class="text-muted mr-2">1 second ago</small>
-        </div>
-        <a href="/cart">Click here</a> for show Cart
-    </b-toast>
-
 </b-form>
 </div>
 

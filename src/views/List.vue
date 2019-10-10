@@ -35,14 +35,13 @@ export default {
       this.$axios.get("http://localhost:3000/products")
       .then(res=>{
         if(res.data[0] == undefined){
-            alert('Error 404: item not found')
-            this.$router.go(-1)
+              this.$router.replace('/error404')
           } else {
             this.itemList = res.data
           }
       }).catch(e=>{
         alert(e)
-        this.$router.go(-1)
+        this.$router.replace('/error404')
       })
     }
   },
