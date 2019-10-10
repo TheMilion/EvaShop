@@ -6,7 +6,9 @@
         <CartList/>
       </b-col>
       <b-col xl="3" sm="12" class="header2">
-        <CartSummary/>
+        <div id="right-container">
+          <CartSummary/>
+        </div>
       </b-col>
     </b-row>
     <div v-else class="emptyCart">
@@ -30,11 +32,7 @@ CartList
   props:{
 
   },
-  computed:{
-    allCart() {
-      return this.$store.getters.getItems
-    }
-  },
+  computed:{},
   data(){
     return {
 
@@ -50,13 +48,19 @@ padding: 80px;
 .emptyCart{
   margin-top: 100px;
 }
-.cartList{
-  border:         none;
-    border-right:    1px solid hsla(200, 10%, 50%,100);
-    width:          1px;  
-     
-}
 .header2 {
   padding: 80px; 
+}
+@media (min-width: 1200px) {
+   #right-container {
+ height: 100%;
+ position: fixed;
+ width: inherit;
+}
+.cartList{
+ border:         none;
+   border-right:    1px solid hsla(200, 10%, 50%,100);
+   width:          1px;
+}
 }
 </style>

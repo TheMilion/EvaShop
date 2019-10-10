@@ -1,12 +1,14 @@
 <template>
   <div>
+    <div>
     <h4>Cart Summary</h4>
     <p>Subtot: {{this.$store.getters.totalPrice}}€</p> 
     <p>IVA included: {{iva}}€</p>
     <hr>
     <h4>Total: {{this.$store.getters.totalPrice}}€</h4>
     <hr>
-    <button v-show="position" @click="goCheckout">Checkout</button>
+    <b-button v-show="position" variant="success" @click="goCheckout">Checkout</b-button>
+    </div>
   </div>
 </template>
 
