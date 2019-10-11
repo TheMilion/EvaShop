@@ -28,6 +28,7 @@
               <sup><b-badge variant="light">{{ this.$store.getters.countItemsCart }}</b-badge></sup>
             </div>
              </b-nav-item>
+                <LoginForm/>
         </b-navbar-nav>
         
       </b-collapse>
@@ -36,9 +37,10 @@
 </template>
 
 <script>
+import LoginForm from '@/components/LoginForm.vue'
 export default {
   name: "navbar",
-  components: {},
+  components: {LoginForm},
   methods: {
 
 onSubmit(){
@@ -70,6 +72,7 @@ if(this.form.search == ""){
   computed: {},
   data() {
     return {
+      
       counterError: "",
       form: {
         search: "",

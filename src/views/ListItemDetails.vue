@@ -2,12 +2,11 @@
   <div class="list" style="margin-top: 50px">
     <b-container fluid>
         <b-row>
-          <b-col cols="1"></b-col>
-          <b-col cols="8" class="info">
-               <ListItemDetailsInfo :item="itemList"/>  
-        
+          <b-col xl="1"></b-col>
+          <b-col xl="8" lg="12" md="12" sm="12" class="info">
+               <ListItemDetailsInfo :item="itemList"/>
       </b-col>   
-          <b-col cols="3"><ListItemDetailsForm :items="itemList"/></b-col>
+          <b-col xl="3" lg="12" md="12" sm="12"><ListItemDetailsForm :items="itemList"/></b-col>
       </b-row>
     </b-container>
     </div>
@@ -31,7 +30,7 @@ export default {
   },
   methods: {
     getItem(){
-      this.$axios.get("http://localhost:3000/products?product_id="+ this.$route.params.id)
+      this.$axios.get("http://localhost:3000/products?product_id=" + this.$route.params.id)
       .then(
         res=>{
           if(res.data[0] == undefined){

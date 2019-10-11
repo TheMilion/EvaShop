@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-    {{this.$store.state.checkcart}}
     <b-jumbotron class="firstJumbotron">
       <div class="firstJumboContent">
       <h2 style="color:white" >Adidas Originals </h2>
@@ -8,7 +7,6 @@
       <router-link :to="{path: '/Categories/Originals'}"><b-button variant="primary">Go to Page Originals</b-button></router-link>
       </div>
     </b-jumbotron>
-
 <b-container fluid class="header2">
   <b-row>
       <b-col cols= "6">
