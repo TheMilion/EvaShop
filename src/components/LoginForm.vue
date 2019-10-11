@@ -36,7 +36,6 @@ export default {
       onSubmit(){
           var obj = {...this.form}
           this.$store.dispatch("checkExist", obj.username)
-
    }
    
 },

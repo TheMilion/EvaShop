@@ -14,6 +14,8 @@ import UserInfo from '@/components/UserInfo.vue'
 import historyOrders from '@/components/historyOrders.vue'
 import Address from '@/components/Address.vue'
 import DetailOrder from '@/components/DetailOrder.vue'
+import EDropdown from '@/components/EDropdown.vue'
+
 
 Vue.use(Router)
 
@@ -60,6 +62,12 @@ export default new Router({
       path: '/search/:id',
       name: 'Search',
       component: Search,
+    },
+    ,
+    {
+      path: '/edropdown',
+      name: 'EDropdown',
+      component: EDropdown,
     },
     {
       path: '/Profile/:id',

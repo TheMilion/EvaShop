@@ -20,9 +20,7 @@
 </div>
     <b-form-group label="Choose Size:" ref="formGroup">
         <div>
-            <b-form-select v-model="form.sizeselected" :class="{'sizeError': sizeSelectError}">
-                <option v-for="i in getMaxSize()" :key="i" v-if="i >= getMinSize()" :value="i">{{i}}</option>
-            </b-form-select>
+            <EDropdown v-model="form.sizeselected" :options="options" />
         </div>  
     </b-form-group>  
     <b-form-group label="Choose Quantity:">
@@ -41,32 +39,42 @@
 </template>
 
 <script>
+import EDropdown from '@/components/EDropdown'
 export default {
   name: "ListItemDetailsForm",
-  components: {},
+  components: {EDropdown},
   methods: {
-      getMaxSize(){
-          if(this.items.gender == 'K'){
-              return 38
-          } else {
-              return 50
-          }
-      },
-      getMinSize(){
-          if(this.items.gender == 'K'){
-              return 28
-          } else {
-              return 39
-          }
-      },
-      getActiveClass(){
-          this.activeClass = this.items.product_id;
-      },
-      itemDetails(el){
-          this.$router.push({
-      		name: 'ListItemDetails', params: {id: el}
-	  })
-  },
+      
+    getGenderSize(){
+        if(this.items.gender == 'K'){
+            for(var i = 28; i < 39; i++){
+                this.options.push({"value": i, "label": i})
+                this.options.push({"value": i+' 1/2', "label": i+' 1/2'})
+            } 
+            return this.options
+        } else {
+            for(var i = 38; i < 50; i++){
+                this.options.push({"value": i, "label": i})
+                this.options.push({"value": i+' 1/2', "label": i+' 1/2'})
+            }
+            return this.options
+        }
+    },
+
+      getSize(){
+            for(var i = 1; i < 11; i++){
+                this.optionsItem.push({"value": i, "label": i})
+            }
+            return this.optionsItem
+    },
+    getActiveClass(){
+        this.activeClass = this.items.product_id;
+    },
+    itemDetails(el){
+        this.$router.push({
+      	    name: 'ListItemDetails', params: {id: el}
+	    })
+    },
 
 onSubmit(){
     this.checkError();
@@ -76,6 +84,7 @@ onSubmit(){
     this.form.original_price = this.items.original_price;
     this.form.image = this.items._links.image_small.href;
     let obj = {id: this.form.product_id, name: this.form.product_name, price: this.form.original_price, urlImg: this.form.image, size: this.form.sizeselected, quantity: this.form.quantity}
+    console.log(obj)
     //console.log(this.$store.dispatch('addToCart', obj))
 for(var i in this.$store.state.cart){
         if(this.$store.state.cart[i].size != obj.size) continue
@@ -88,6 +97,7 @@ for(var i in this.$store.state.cart){
     this.sizeSelectError = false;
     this.makeToast()
     this.$store.dispatch('addToCart', obj)
+    console.log(this.$store.state.cart)
     //??????this.clearForm();
     }
 },
@@ -145,6 +155,8 @@ if(this.form.sizeselected == ""){
   computed: {},
   data() {
     return {
+        optionsItem: "",
+        options: [],
         showTop: false,
         form:{
             product_name: "",
@@ -163,6 +175,7 @@ if(this.form.sizeselected == ""){
     };
   },
   mounted() {
+      this.getGenderSize();
       //console.log(this.$refs.productName.innerHTML)
       //console.log(this.$refs.formGroup.disabled)
   }
